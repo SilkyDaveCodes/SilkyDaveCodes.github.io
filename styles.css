@@ -1,14 +1,16 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#000;
-  --bg2:#07080a;
-  --bg3:#101418;
-  --border:#1c2230;
-  --border2:#253040;
+  --bg2:#0b0f14;
+  --bg3:#141a22;
+  --border:#1d2630;
+  --border2:#2c3845;
   --orange:#ff4f4f;
   --orange-dim:#7a1010;
   --orange-glow:rgba(255,79,79,0.12);
   --red:#ff4f4f;
+  --green:#6adb7d;
+  --green-glow:rgba(106,219,125,0.14);
   --blue:#4fa3e0;
   --blue-dim:#1a3a5c;
   --purple:#9b7fe8;
@@ -25,7 +27,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
 #boot{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity 0.6s}
 .boot-logo{font-family:var(--mono);font-size:11px;color:var(--orange);margin-bottom:2rem;text-align:center;line-height:1.4}
 .boot-text{font-family:var(--mono);font-size:12px;width:460px;max-width:90vw}
-#pcb-canvas{position:fixed;inset:0;z-index:-1;background:#000;}
+#pcb-canvas{position:fixed;inset:0;z-index:-1;background:var(--bg);}
 .boot-bar{width:460px;max-width:90vw;height:3px;background:var(--border);margin-top:1.5rem;overflow:hidden;position:relative}
 .boot-progress{height:100%;background:linear-gradient(90deg,var(--blue),var(--orange));width:0;animation:bprog 2s ease forwards}
 @keyframes bprog{to{width:100%}}

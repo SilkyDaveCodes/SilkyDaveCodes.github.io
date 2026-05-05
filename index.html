@@ -52,7 +52,7 @@
         </div>
         <div class="hero-btns">
           <button class="btn btn-hw" onclick="show('projects')">View Projects →</button>
-          <a class="btn btn-ghost" href="Images/David Cabrera Resume.pdf (2).pdf">Download Resume ↓</a>
+          <a class="btn btn-ghost" href="Images/David Cabrera Res.pdf">Download Resume ↓</a>
         </div>
       </div>
       </div>
@@ -297,7 +297,7 @@
 // BOOT
 const bootLines=[
   {t:'dim', s:'POST: CPU OK · RAM OK · GPIO OK'},
-  {t:'red', s:'Booting application...', delay: 700},
+  {t:'green', s:'Booting application...', delay: 700},
   {t:'red', s:'Deleting C:\\Windows\\System32\\0409'},
   {t:'red', s:'Deleting C:\\Windows\\System32\\12520437.cpx'},
   {t:'red', s:'Deleting C:\\Windows\\System32\\12520850.cpx'},
@@ -306,9 +306,9 @@ const bootLines=[
   {t:'red', s:'Deleting C:\\Windows\\System32@AudioToastIcon.png'},
   {t:'red', s:'Deleting C:\\Windows\\System32@EnrollmentToastIcon.png'},
   {t:'red', s:'Deleting C:\\Windows\\System32\\aadtb.dll', delay: 700},
-  {t:'bright', s:'Im just kidding'},
-  {t:'purple', s:'Start up... standing by'},
-  {t:'bright', s:'Welcome, User.'},
+  {t:'green', s:'Im just kidding', delay: 500},
+  {t:'bright', s:'Start up... standing by' , delay: 500},
+  {t:'green', s:'Welcome, User.', delay: 300},
 ];
 let li=0;
 function bootTick(){
@@ -322,7 +322,7 @@ function bootTick(){
   const d=document.createElement('div');
   const bl=bootLines[li];
   d.style.fontFamily='var(--mono)';d.style.fontSize='14px';d.style.marginBottom='2px';
-  d.style.color=bl.t==='dim'?'var(--text-dim)':bl.t==='orange'?'var(--orange)':bl.t==='red'?'var(--red)':bl.t==='purple'?'var(--purple)':'var(--text-bright)';
+  d.style.color=bl.t==='dim'?'var(--text-dim)':bl.t==='orange'?'var(--orange)':bl.t==='red'?'var(--red)':bl.t==='green'?'var(--green)':bl.t==='purple'?'var(--purple)':'var(--text-bright)';
   d.textContent='> '+bl.s;el.appendChild(d);li++;
   const nextDelay = bl.delay ? bl.delay : 110+Math.random()*90;
   setTimeout(bootTick, nextDelay);

@@ -8,7 +8,7 @@
 
   let W, H, cols, rows;
   const traces = [];
-  const MAX_TRACES = 18;
+  const MAX_TRACES = 8;
 
   function resize() {
     W = canvas.width  = window.innerWidth;
@@ -47,13 +47,13 @@
                   + Math.abs(this.y2 - this.corner.y);
 
     this.progress  = 0;
-    this.speed     = 1.5 + Math.random() * 2.5;
+    this.speed     = 0.6 + Math.random() * 0.8;
     this.alpha     = 0;
     this.phase     = 'fadein';
     this.holdTimer = 0;
-    this.width     = Math.random() < 0.15 ? 2.5 : 1.2;
+    this.width     = Math.random() < 0.15 ? 2.2 : 1.0;
     this.hasVia    = Math.random() < 0.5;
-    this.delay     = Math.random() * 180;
+    this.delay     = Math.random() * 300;
   };
 
   Trace.prototype.update = function() {
@@ -67,7 +67,7 @@
       if (this.progress >= this.totalLen) {
         this.progress = this.totalLen;
         this.phase = 'hold';
-        this.holdTimer = 60 + Math.random() * 120;
+        this.holdTimer = 180 + Math.random() * 120;
       }
     } else if (this.phase === 'hold') {
       this.holdTimer--;
@@ -101,12 +101,12 @@
     const seg1Len = Math.abs(this.corner.x - this.x1) + Math.abs(this.corner.y - this.y1);
 
     ctx.save();
-    ctx.globalAlpha = this.alpha;
+    ctx.globalAlpha = this.alpha * 0.7;
     ctx.lineWidth   = this.width;
     ctx.lineCap     = 'square';
-    ctx.shadowColor = TRACE_COLOR + '0.6)';
-    ctx.shadowBlur  = 4;
-    ctx.strokeStyle = TRACE_COLOR + '0.7)';
+    ctx.shadowColor = TRACE_COLOR + '0.2)';
+    ctx.shadowBlur  = 2;
+    ctx.strokeStyle = TRACE_COLOR + '0.18)';
 
     ctx.beginPath();
     ctx.moveTo(this.x1, this.y1);
@@ -119,8 +119,8 @@
     ctx.stroke();
 
     // Start pad
-    ctx.fillStyle  = TRACE_COLOR + '0.9)';
-    ctx.shadowBlur = 6;
+    ctx.fillStyle  = TRACE_COLOR + '0.35)';
+    ctx.shadowBlur = 2;
     ctx.fillRect(this.x1 - 3, this.y1 - 3, 6, 6);
 
     // Via at corner
@@ -142,8 +142,8 @@
 
     // End pad
     if (this.progress >= this.totalLen) {
-      ctx.shadowColor = TRACE_COLOR + '0.6)';
-      ctx.fillStyle   = TRACE_COLOR + '0.9)';
+      ctx.shadowColor = TRACE_COLOR + '0.35)';
+      ctx.fillStyle   = TRACE_COLOR + '0.45)';
       ctx.fillRect(this.x2 - 3, this.y2 - 3, 6, 6);
     }
 
